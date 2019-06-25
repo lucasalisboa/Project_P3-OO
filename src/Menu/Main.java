@@ -188,10 +188,13 @@ public class Main {
             }
         }
 
-        if(operation == 12)
+        if(operation == 11)
         {
             int index = search(payroll);
-            payroll.get(index).toString();
+            if(index != -1)
+            {
+                System.out.println(payroll.get(index).toString());
+            }
         }
 
         System.out.println();
@@ -209,7 +212,6 @@ public class Main {
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("WHAT'S THE WORKER ID?");
-        sc.nextLine();
         String worker_id = sc.nextLine();
         for(int i = 0; i < payroll.size(); i++)
         {

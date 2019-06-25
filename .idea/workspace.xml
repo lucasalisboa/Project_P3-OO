@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a125df7-60ec-41f8-8dd5-de2c0f630674" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Entities/CommissionedWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/CommissionedWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/HouristWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/HouristWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/SalariedWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/SalariedWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entities/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/Worker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Main.java" afterDir="false" />
     </list>
@@ -23,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Menu/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="193" column="42" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
+            <state relative-caret-position="162">
+              <caret line="195" column="66" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -35,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entities/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="116" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="408">
+              <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -105,15 +102,15 @@
       <list>
         <option value="$PROJECT_DIR$/src/Menu/Calendar.java" />
         <option value="$PROJECT_DIR$/src/Menu/MyCalendar.java" />
-        <option value="$PROJECT_DIR$/src/Entities/Worker.java" />
         <option value="$PROJECT_DIR$/src/Entities/SalariedWorker.java" />
         <option value="$PROJECT_DIR$/src/Entities/HouristWorker.java" />
         <option value="$PROJECT_DIR$/src/Entities/CommissionedWorker.java" />
+        <option value="$PROJECT_DIR$/src/Entities/Worker.java" />
         <option value="$PROJECT_DIR$/src/Menu/Main.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-15" />
     <option name="y" value="20" />
     <option name="width" value="1750" />
@@ -230,18 +227,18 @@
       <workItem from="1561380882323" duration="11125000" />
       <workItem from="1561419704663" duration="2352000" />
       <workItem from="1561465166605" duration="7896000" />
-      <workItem from="1561479399977" duration="5680000" />
+      <workItem from="1561479399977" duration="6662000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34891000" />
+    <option name="totallyTimeSpent" value="35873000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27046978" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27046978" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -250,7 +247,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.58215296" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.58215296" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -335,13 +332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/Worker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="116" selection-start-line="116" selection-end-line="116" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entities/CommissionedWorker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -353,10 +343,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entities/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="193" column="42" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
+        <state relative-caret-position="162">
+          <caret line="195" column="66" selection-start-line="195" selection-start-column="66" selection-end-line="195" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
