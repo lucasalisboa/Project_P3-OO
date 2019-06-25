@@ -115,9 +115,15 @@ public abstract class Worker {
       }
     }
 
-    public String toString()
-    {
-        return name;
+    public String toString() {
+        return "Worker{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", payment_method='" + payment_method + '\'' +
+                ", syndicate=" + syndicate +
+                ", syndicate_id='" + syndicate_id + '\'' +
+                ", syndicate_tax=" + syndicate_tax +
+                '}';
     }
-
 }

@@ -41,4 +41,13 @@ public class HouristWorker extends Worker {
         int new_hours = sc.nextInt();
         hours += new_hours;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "HouristWorker{" +
+                "hour_salary=" + hour_salary +
+                ", hours=" + hours +
+                '}';
+    }
 }

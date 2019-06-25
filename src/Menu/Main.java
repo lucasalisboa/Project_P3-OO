@@ -34,7 +34,8 @@ public class Main {
         System.out.println("8- UNDO/REDO");
         System.out.println("9- SHOW THE PAYMENT SCHEDULE");
         System.out.println("10- CREATE A NEW PAYMENT SCHEDULE");
-        System.out.println("11- FINISH THE DAY");
+        System.out.println("11 - SHOW THE WORKER INFORMATIONS");
+        System.out.println("12- FINISH THE DAY");
 
         int operation;
         Scanner sc = new Scanner(System.in);
@@ -61,7 +62,7 @@ public class Main {
                 payroll.add(new CommissionedWorker());
             }
         }
-        else if (operation == 11)
+        else if (operation == 12)
         {
             calendar.finishDay();
         }
@@ -185,6 +186,12 @@ public class Main {
             {
                 payroll.get(index).changeSyndicateTax();
             }
+        }
+
+        if(operation == 12)
+        {
+            int index = search(payroll);
+            payroll.get(index).toString();
         }
 
         System.out.println();

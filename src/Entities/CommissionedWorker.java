@@ -47,4 +47,14 @@ public class CommissionedWorker extends Worker {
         System.out.println("HOW MANY PERCENTS FOR SALE?");
         percent = sc.nextDouble();
     }
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "CommissionedWorker{" +
+                "base_salary=" + base_salary +
+                ", sales=" + sales +
+                ", percent=" + percent +
+                '}';
+    }
 }

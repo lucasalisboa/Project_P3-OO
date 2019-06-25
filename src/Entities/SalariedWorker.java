@@ -32,4 +32,12 @@ public class SalariedWorker extends Worker {
         super.addWorker();
         newType();
     }
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "SalariedWorker{" +
+                "salary=" + salary +
+                '}';
+    }
 }
