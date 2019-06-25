@@ -36,6 +36,14 @@ public class CommissionedWorker extends Worker {
         sales = 0;
         System.out.println("WHAT'S THE BASE SALARY?");
         base_salary = sc.nextDouble();
+        setPercent();
+    }
+    public void newSale()
+    {
+        sales++;
+    }
+    public void setPercent()
+    {
         System.out.println("HOW MANY PERCENTS FOR SALE?");
         percent = sc.nextDouble();
     }

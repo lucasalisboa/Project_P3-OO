@@ -71,31 +71,63 @@ public class Main {
         }
         else if(operation == 2)
         {
-                System.out.println("WHAT'S THE WORKER ID?");
-                sc.nextLine();
-                String worker_id = sc.nextLine();
-                for(int i = 0; i < payroll.size(); i++)
+                int index = search(payroll);
+                if (index != -1)
                 {
-                    if(payroll.get(i).id.equals(worker_id))
-                    {
-                        String worker_name = payroll.get(i).name;
-                        payroll.remove(i);
-                        System.out.println("THE WORKER " + worker_name + " WAS REMOVED");
-                        break;
-                    }
-                    else if(i + 1 == payroll.size())
-                    {
-                        System.out.println("THE WORKER DOESN'T EXIST");
-                        break;
-                    }
+                    remove(payroll,index);
                 }
         }
+
+        else if(operation == 3)
+        {
+            int index = search(payroll);
+            if(index != -1)
+            {
+                if(payroll.get(index) instanceof HouristWorker)
+                {
+                    ((HouristWorker) payroll.get(index)).point();
+                }
+                else
+                {
+                    System.out.println("THIS WORKER IS NOT A HOURIST");
+                }
+            }
+        }
+        else if(operation == 4)
+        {
+            int index = search(payroll);
+            if(index != -1)
+            {
+                if(payroll.get(index) instanceof CommissionedWorker)
+                {
+                    ((CommissionedWorker) payroll.get(index)).newSale();
+                }
+                else
+                {
+                    System.out.println("THIS WORKER IS NOT A COMMISSIONED");
+                }
+            }
+        }
+        else if(operation == 5)
+        {
+            int index = search(payroll);
+            if(index != -1)
+            {
+                if(payroll.get(index) instanceof CommissionedWorker)
+                {
+                    ((CommissionedWorker) payroll.get(index)).setPercent();
+                }
+                else
+                {
+                    System.out.println("THIS WORKER IS NOT A COMMISSIONED");
+                }
+            }
+        }
+
         else if(operation == 7)
         {
-            System.out.println("PLEASE, ENTER WITH THE EMPLOYER'S ID");
-            String worker_id;
-            sc.nextLine();
-            worker_id = sc.nextLine();
+            int index = search(payroll);
+
             System.out.println("WHAT INFORMATION YOU WANT TO CHANGE?");
             System.out.println("1- NAME");
             System.out.println("2- ADDRESS");
@@ -107,70 +139,79 @@ public class Main {
             sc.nextLine();
             int info = sc.nextInt();
 
-            for(int i = 0; i < payroll.size(); i++)
+            if(info == 1)
             {
-                if(payroll.get(i).id.equals(worker_id))
-                {
-                    if(info == 1)
-                    {
-                        payroll.get(i).changeName();
-                    }
-                    else if(info == 2)
-                    {
-                        payroll.get(i).changeAddress();
-                    }
-                    else if(info == 3)
-                    {
-                        String type;
-                        System.out.println("WHAT'S THE WORKER TYPE?");
-                        System.out.println("H- HOURLY; S- SALARIED; C- COMMISSIONED");
-                        type = sc.next();
-                        sc.nextLine();
-
-                        if (type.equals("H"))
-                        {
-                            payroll.add(new HouristWorker(payroll.get(i).id,payroll.get(i).name,payroll.get(i).getAddress(),payroll.get(i).getPayment_method(),payroll.get(i).isSyndicate(),payroll.get(i).getSyndicate_id(),payroll.get(i).getSyndicate_tax()));
-                        }
-                        else if(type.equals("S"))
-                        {
-                            payroll.add(new SalariedWorker(payroll.get(i).id,payroll.get(i).name,payroll.get(i).getAddress(),payroll.get(i).getPayment_method(),payroll.get(i).isSyndicate(),payroll.get(i).getSyndicate_id(),payroll.get(i).getSyndicate_tax()));
-                        }
-                        else
-                        {
-                            payroll.add(new CommissionedWorker(payroll.get(i).id,payroll.get(i).name,payroll.get(i).getAddress(),payroll.get(i).getPayment_method(),payroll.get(i).isSyndicate(),payroll.get(i).getSyndicate_id(),payroll.get(i).getSyndicate_tax()));
-                        }
-                    }
-                    else if(info == 4)
-                    {
-                        payroll.get(i).changePayMethod();
-                    }
-                    else if(info == 5)
-                    {
-                        payroll.get(i).changeSyndicate();
-                    }
-                    else if(info == 6)
-                    {
-                        payroll.get(i).changeSyndicateId();
-                    }
-                    else
-                    {
-                        payroll.get(i).changeSyndicateTax();
-                    }
-
-                    break;
-                }
-                else if(i + 1 == payroll.size())
-                {
-                    System.out.println("THE WORKER DOESN'T EXIST");
-                    break;
-                }
+                payroll.get(index).changeName();
             }
+            else if(info == 2)
+            {
+                payroll.get(index).changeAddress();
+            }
+            else if(info == 3)
+            {
+                String type;
+                System.out.println("WHAT'S THE WORKER TYPE?");
+                System.out.println("H- HOURLY; S- SALARIED; C- COMMISSIONED");
+                type = sc.next();
+                sc.nextLine();
 
+                if (type.equals("H"))
+                {
+                    payroll.add(new HouristWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax()));
+                }
+                else if(type.equals("S"))
+                {
+                    payroll.add(new SalariedWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax()));
+                }
+                else
+                {
+                    payroll.add(new CommissionedWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax()));
+                }
+                remove(payroll,index);
+            }
+            else if(info == 4)
+            {
+                payroll.get(index).changePayMethod();
+            }
+            else if(info == 5)
+            {
+                payroll.get(index).changeSyndicate();
+            }
+            else if(info == 6)
+            {
+                payroll.get(index).changeSyndicateId();
+            }
+            else
+            {
+                payroll.get(index).changeSyndicateTax();
+            }
         }
-
 
         System.out.println();
         action(calendar, payroll);
 
+    }
+
+    public static void remove(List <Worker> payroll, int i)
+    {
+        String worker_name = payroll.get(i).name;
+        payroll.remove(i);
+        System.out.println("THE WORKER " + worker_name + " WAS REMOVED");
+    }
+    public static int search(List <Worker> payroll)
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("WHAT'S THE WORKER ID?");
+        sc.nextLine();
+        String worker_id = sc.nextLine();
+        for(int i = 0; i < payroll.size(); i++)
+        {
+            if(payroll.get(i).id.equals(worker_id))
+            {
+                return i;
+            }
+        }
+        System.out.println("THE WORKER DOESN'T EXIST");
+        return -1;
     }
 }
