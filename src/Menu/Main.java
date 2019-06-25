@@ -61,21 +61,24 @@ public class Main {
                 payroll.add(new CommissionedWorker());
             }
         }
+        else if (operation == 11)
+        {
+            calendar.finishDay();
+        }
+        else if (payroll.isEmpty())
+        {
+            System.out.println("THE LIST IS EMPTY");
+        }
         else if(operation == 2)
         {
-            if(payroll.isEmpty())
-            {
-                System.out.println("THE LIST IS EMPTY");
-            }
-            else
-            {
-                System.out.println("WHAT'S THE WORKER?");
+                System.out.println("WHAT'S THE WORKER ID?");
                 sc.nextLine();
-                String worker_name = sc.nextLine();
+                String worker_id = sc.nextLine();
                 for(int i = 0; i < payroll.size(); i++)
                 {
-                    if(payroll.get(i).name.equals(worker_name))
+                    if(payroll.get(i).id.equals(worker_id))
                     {
+                        String worker_name = payroll.get(i).name;
                         payroll.remove(i);
                         System.out.println("THE WORKER " + worker_name + " WAS REMOVED");
                         break;
@@ -86,12 +89,85 @@ public class Main {
                         break;
                     }
                 }
-            }
         }
-        else if (operation == 11)
+        else if(operation == 7)
         {
-            calendar.finishDay();
+            System.out.println("PLEASE, ENTER WITH THE EMPLOYER'S ID");
+            String worker_id;
+            sc.nextLine();
+            worker_id = sc.nextLine();
+            System.out.println("WHAT INFORMATION YOU WANT TO CHANGE?");
+            System.out.println("1- NAME");
+            System.out.println("2- ADDRESS");
+            System.out.println("3- TYPE");
+            System.out.println("4- PAYMENT METHOD");
+            System.out.println("5- SYNDICATED");
+            System.out.println("6- SYNDICATE IDENTIFICATION");
+            System.out.println("7- SYNDICATE TAX");
+            sc.nextLine();
+            int info = sc.nextInt();
+
+            for(int i = 0; i < payroll.size(); i++)
+            {
+                if(payroll.get(i).id.equals(worker_id))
+                {
+                    if(info == 1)
+                    {
+                        payroll.get(i).changeName();
+                    }
+                    else if(info == 2)
+                    {
+                        payroll.get(i).changeAddress();
+                    }
+                    else if(info == 3)
+                    {
+                        String type;
+                        System.out.println("WHAT'S THE WORKER TYPE?");
+                        System.out.println("H- HOURLY; S- SALARIED; C- COMMISSIONED");
+                        type = sc.next();
+                        sc.nextLine();
+
+                        if (type.equals("H"))
+                        {
+                            payroll.add(new HouristWorker(payroll.get(i).id,payroll.get(i).name,payroll.get(i).getAddress(),payroll.get(i).getPayment_method(),payroll.get(i).isSyndicate(),payroll.get(i).getSyndicate_id(),payroll.get(i).getSyndicate_tax()));
+                        }
+                        else if(type.equals("S"))
+                        {
+                            payroll.add(new SalariedWorker(payroll.get(i).id,payroll.get(i).name,payroll.get(i).getAddress(),payroll.get(i).getPayment_method(),payroll.get(i).isSyndicate(),payroll.get(i).getSyndicate_id(),payroll.get(i).getSyndicate_tax()));
+                        }
+                        else
+                        {
+                            payroll.add(new CommissionedWorker(payroll.get(i).id,payroll.get(i).name,payroll.get(i).getAddress(),payroll.get(i).getPayment_method(),payroll.get(i).isSyndicate(),payroll.get(i).getSyndicate_id(),payroll.get(i).getSyndicate_tax()));
+                        }
+                    }
+                    else if(info == 4)
+                    {
+                        payroll.get(i).changePayMethod();
+                    }
+                    else if(info == 5)
+                    {
+                        payroll.get(i).changeSyndicate();
+                    }
+                    else if(info == 6)
+                    {
+                        payroll.get(i).changeSyndicateId();
+                    }
+                    else
+                    {
+                        payroll.get(i).changeSyndicateTax();
+                    }
+
+                    break;
+                }
+                else if(i + 1 == payroll.size())
+                {
+                    System.out.println("THE WORKER DOESN'T EXIST");
+                    break;
+                }
+            }
+
         }
+
 
         System.out.println();
         action(calendar, payroll);
