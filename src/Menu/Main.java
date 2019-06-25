@@ -124,7 +124,7 @@ public class Main {
             }
         }
 
-        else if(operation == 7)
+        else if(operation == 6)
         {
             int index = search(payroll);
 
