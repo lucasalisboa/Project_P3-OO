@@ -9,8 +9,9 @@ public class HouristWorker extends Worker {
     private int hours;
     Scanner sc = new Scanner(System.in);
 
-    public HouristWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax) {
+    public HouristWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax,Date today) {
         changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
+        newPayDay(today);
     }
 
     public HouristWorker(Date today) {

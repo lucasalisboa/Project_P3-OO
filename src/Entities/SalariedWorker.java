@@ -12,8 +12,9 @@ public class SalariedWorker extends Worker {
         addWorker();
         newPayDay(today);
     }
-    public SalariedWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax) {
+    public SalariedWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax, Date today) {
         changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
+        newPayDay(today);
     }
 
     @Override
