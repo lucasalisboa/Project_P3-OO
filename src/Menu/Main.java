@@ -168,7 +168,6 @@ public class Main {
                 System.out.println("5- SYNDICATED");
                 System.out.println("6- SYNDICATE IDENTIFICATION");
                 System.out.println("7- SYNDICATE TAX");
-                sc.nextLine();
                 int info = sc.nextInt();
 
                 if(info == 1)

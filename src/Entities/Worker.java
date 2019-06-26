@@ -25,6 +25,7 @@ public abstract class Worker {
         System.out.println("DOES THE WORKER IS SYNDICATED?");
         System.out.println("Y - YES / N - NO");
         String aux = sc.next();
+        sc.nextLine();
         if(aux.equals("N")||aux.equals("NO"))
         {
             notSyndicated();
