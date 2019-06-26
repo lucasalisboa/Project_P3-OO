@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a125df7-60ec-41f8-8dd5-de2c0f630674" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Entities/CommissionedWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/CommissionedWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/HouristWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/HouristWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entities/SalariedWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entities/SalariedWorker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exceptions/DomainExcepciotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Payroll_OO_Java/Menu/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Payroll_OO_Java/Menu/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,10 +22,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Menu/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="175" column="42" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
+            <state relative-caret-position="-54">
+              <caret line="194" column="70" selection-start-line="194" selection-start-column="70" selection-end-line="194" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Exceptions/DomainExcepciotion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+              <folding>
+                <element signature="e#119#120#0" expanded="true" />
+                <element signature="e#142#143#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -34,12 +47,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entities/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
+            <state relative-caret-position="-369">
               <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2886#2887#0" expanded="true" />
-                <element signature="e#2916#2917#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,7 +59,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entities/SalariedWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
+            <state relative-caret-position="238">
               <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -60,12 +71,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entities/CommissionedWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="289">
               <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1993#1994#0" expanded="true" />
-                <element signature="e#2045#2046#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,12 +83,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entities/HouristWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
+            <state relative-caret-position="187">
               <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1757#1758#0" expanded="true" />
-                <element signature="e#1812#1813#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,8 +95,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Menu/MyCalendar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="85">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,6 +125,7 @@
         <option value="$PROJECT_DIR$/src/Entities/SalariedWorker.java" />
         <option value="$PROJECT_DIR$/src/Entities/HouristWorker.java" />
         <option value="$PROJECT_DIR$/src/Entities/CommissionedWorker.java" />
+        <option value="$PROJECT_DIR$/src/Exceptions/DomainExcepciotion.java" />
         <option value="$PROJECT_DIR$/src/Menu/Main.java" />
       </list>
     </option>
@@ -134,23 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Payroll_OO" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Payroll_OO_Java" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="Payroll_OO" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Payroll_OO_Java" type="616d4139:PackageViewModuleNode" />
-              <item name="Menu" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -173,12 +164,35 @@
               <item name="Payroll_OO" type="b2602c69:ProjectViewProjectNode" />
               <item name="Payroll_OO_Java" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Payroll_OO" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Payroll_OO_Java" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Menu" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Payroll_OO" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Payroll_OO_Java" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Payroll_OO" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Payroll_OO_Java" type="616d4139:PackageViewModuleNode" />
+              <item name="Menu" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,18 +254,19 @@
       <workItem from="1561419704663" duration="2352000" />
       <workItem from="1561465166605" duration="7896000" />
       <workItem from="1561479399977" duration="7218000" />
-      <workItem from="1561506593801" duration="9181000" />
+      <workItem from="1561506593801" duration="9246000" />
+      <workItem from="1561521178663" duration="1696000" />
+      <workItem from="1561523862550" duration="2404000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45610000" />
+    <option name="totallyTimeSpent" value="49775000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.27449664" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.28255033" />
       <window_info id="Structure" order="1" sideWeight="0.50141644" side_tool="true" weight="0.27449664" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -282,8 +297,8 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26644295" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49858356" visible="true" weight="0.28255033" />
+      <window_info id="Structure" order="1" sideWeight="0.50141644" side_tool="true" weight="0.27449664" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -292,7 +307,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.58215296" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40084985" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -317,32 +332,30 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Menu/MyCalendar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entities/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
+        <state relative-caret-position="-369">
           <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2886#2887#0" expanded="true" />
-            <element signature="e#2916#2917#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entities/SalariedWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="238">
           <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entities/CommissionedWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -351,32 +364,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entities/HouristWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
+        <state relative-caret-position="187">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1757#1758#0" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entities/CommissionedWorker.java">
+    <entry file="file://$PROJECT_DIR$/src/Menu/MyCalendar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state relative-caret-position="85">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1993#1994#0" expanded="true" />
-            <element signature="e#2045#2046#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Exceptions/DomainExcepciotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="e#119#120#0" expanded="true" />
+            <element signature="e#142#143#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="175" column="42" selection-start-line="175" selection-start-column="42" selection-end-line="175" selection-end-column="42" />
+        <state relative-caret-position="-54">
+          <caret line="194" column="70" selection-start-line="194" selection-start-column="70" selection-end-line="194" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

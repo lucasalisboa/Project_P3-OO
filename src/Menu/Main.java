@@ -4,22 +4,23 @@ import Entities.CommissionedWorker;
 import Entities.HouristWorker;
 import Entities.SalariedWorker;
 import Entities.Worker;
+import Exceptions.DomainExcepciotion;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+//import java.util.Calendar;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws DomainExcepciotion {
         System.out.println("WELCOME\n");
         MyCalendar calendar = new MyCalendar();
         List<Worker> payroll = new ArrayList<>();
         action(calendar,payroll);
     }
 
-    public static void action(MyCalendar calendar, List <Worker> payroll)
+    public static void action(MyCalendar calendar, List <Worker> payroll) throws DomainExcepciotion
     {
         System.out.println("TODAY IS:");
         System.out.println(calendar.data.format(calendar.today) + "," + calendar.dayWeek());
@@ -38,118 +39,13 @@ public class Main {
         System.out.println("11 - SHOW THE WORKER INFORMATIONS");
         System.out.println("12- FINISH THE DAY");
 
-        int operation;
-        Scanner sc = new Scanner(System.in);
-        operation = sc.nextInt();
 
-        if(operation == 1)
-        {
-            String type;
-            System.out.println("WHAT'S THE WORKER TYPE?");
-            System.out.println("H- HOURLY; S- SALARIED; C- COMMISSIONED");
-            type = sc.next();
-            sc.nextLine();
+        try{
+            int operation;
+            Scanner sc = new Scanner(System.in);
+            operation = sc.nextInt();
 
-            if (type.equals("H"))
-            {
-                payroll.add(new HouristWorker(calendar.today));
-            }
-            else if(type.equals("S"))
-            {
-                payroll.add(new SalariedWorker(calendar.today));
-            }
-            else
-            {
-                payroll.add(new CommissionedWorker(calendar.today));
-            }
-        }
-        else if (operation == 12)
-        {
-            calendar.finishDay();
-        }
-        else if (payroll.isEmpty())
-        {
-            System.out.println("THE LIST IS EMPTY");
-        }
-        else if(operation == 2)
-        {
-                int index = search(payroll);
-                if (index != -1)
-                {
-                    remove(payroll,index);
-                }
-        }
-
-        else if(operation == 3)
-        {
-            int index = search(payroll);
-            if(index != -1)
-            {
-                if(payroll.get(index) instanceof HouristWorker)
-                {
-                    ((HouristWorker) payroll.get(index)).point();
-                }
-                else
-                {
-                    System.out.println("THIS WORKER IS NOT A HOURIST");
-                }
-            }
-        }
-        else if(operation == 4)
-        {
-            int index = search(payroll);
-            if(index != -1)
-            {
-                if(payroll.get(index) instanceof CommissionedWorker)
-                {
-                    ((CommissionedWorker) payroll.get(index)).newSale();
-                }
-                else
-                {
-                    System.out.println("THIS WORKER IS NOT A COMMISSIONED");
-                }
-            }
-        }
-        else if(operation == 5)
-        {
-            int index = search(payroll);
-            if(index != -1)
-            {
-                if(payroll.get(index) instanceof CommissionedWorker)
-                {
-                    ((CommissionedWorker) payroll.get(index)).setPercent();
-                }
-                else
-                {
-                    System.out.println("THIS WORKER IS NOT A COMMISSIONED");
-                }
-            }
-        }
-
-        else if(operation == 6)
-        {
-            int index = search(payroll);
-
-            System.out.println("WHAT INFORMATION YOU WANT TO CHANGE?");
-            System.out.println("1- NAME");
-            System.out.println("2- ADDRESS");
-            System.out.println("3- TYPE");
-            System.out.println("4- PAYMENT METHOD");
-            System.out.println("5- SYNDICATED");
-            System.out.println("6- SYNDICATE IDENTIFICATION");
-            System.out.println("7- SYNDICATE TAX");
-            sc.nextLine();
-            int info = sc.nextInt();
-
-            if(info == 1)
-            {
-                payroll.get(index).changeName();
-            }
-            else if(info == 2)
-            {
-                payroll.get(index).changeAddress();
-            }
-            else if(info == 3)
+            if(operation == 1)
             {
                 String type;
                 System.out.println("WHAT'S THE WORKER TYPE?");
@@ -159,61 +55,186 @@ public class Main {
 
                 if (type.equals("H"))
                 {
-                    payroll.add(new HouristWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax(),calendar.today));
+                    payroll.add(new HouristWorker(calendar.today));
                 }
                 else if(type.equals("S"))
                 {
-                    payroll.add(new SalariedWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax(),calendar.today));
+                    payroll.add(new SalariedWorker(calendar.today));
                 }
                 else
                 {
-                    payroll.add(new CommissionedWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax(),calendar.today));
+                    payroll.add(new CommissionedWorker(calendar.today));
                 }
-                payroll.remove(index);
             }
-            else if(info == 4)
+            else if (operation == 12)
             {
-                payroll.get(index).changePayMethod();
+                calendar.finishDay();
             }
-            else if(info == 5)
+            else if (payroll.isEmpty())
             {
-                payroll.get(index).changeSyndicate();
+              throw new DomainExcepciotion("THE LIST IS EMPTY");
             }
-            else if(info == 6)
+            else if(operation == 2)
             {
-                payroll.get(index).changeSyndicateId();
+                int index = search(payroll);
+                if (index != -1)
+                {
+                    remove(payroll,index);
+                }
+            }
+
+            else if(operation == 3)
+            {
+                int index = search(payroll);
+                if(index != -1)
+                {
+                    if(payroll.get(index) instanceof HouristWorker)
+                    {
+                        ((HouristWorker) payroll.get(index)).point();
+                    }
+                    else
+                    {
+                        System.out.println("THIS WORKER IS NOT A HOURIST");
+                    }
+                }
+            }
+            else if(operation == 4)
+            {
+                int index = search(payroll);
+                if(index != -1)
+                {
+                    if(payroll.get(index) instanceof CommissionedWorker)
+                    {
+                        ((CommissionedWorker) payroll.get(index)).newSale();
+                    }
+                    else
+                    {
+                        System.out.println("THIS WORKER IS NOT A COMMISSIONED");
+                    }
+                }
+            }
+            else if(operation == 5)
+            {
+                int index = search(payroll);
+                if(index != -1)
+                {
+                    if(payroll.get(index) instanceof CommissionedWorker)
+                    {
+                        ((CommissionedWorker) payroll.get(index)).setPercent();
+                    }
+                    else
+                    {
+                        System.out.println("THIS WORKER IS NOT A COMMISSIONED");
+                    }
+                }
+            }
+
+            else if(operation == 6)
+            {
+                int index = search(payroll);
+
+                System.out.println("WHAT INFORMATION YOU WANT TO CHANGE?");
+                System.out.println("1- NAME");
+                System.out.println("2- ADDRESS");
+                System.out.println("3- TYPE");
+                System.out.println("4- PAYMENT METHOD");
+                System.out.println("5- SYNDICATED");
+                System.out.println("6- SYNDICATE IDENTIFICATION");
+                System.out.println("7- SYNDICATE TAX");
+                sc.nextLine();
+                int info = sc.nextInt();
+
+                if(info == 1)
+                {
+                    payroll.get(index).changeName();
+                }
+                else if(info == 2)
+                {
+                    payroll.get(index).changeAddress();
+                }
+                else if(info == 3)
+                {
+                    String type;
+                    System.out.println("WHAT'S THE WORKER TYPE?");
+                    System.out.println("H- HOURLY; S- SALARIED; C- COMMISSIONED");
+                    type = sc.next();
+                    sc.nextLine();
+
+                    if (type.equals("H"))
+                    {
+                        payroll.add(new HouristWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax(),calendar.today));
+                    }
+                    else if(type.equals("S"))
+                    {
+                        payroll.add(new SalariedWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax(),calendar.today));
+                    }
+                    else
+                    {
+                        payroll.add(new CommissionedWorker(payroll.get(index).id,payroll.get(index).name,payroll.get(index).getAddress(),payroll.get(index).getPayment_method(),payroll.get(index).isSyndicate(),payroll.get(index).getSyndicate_id(),payroll.get(index).getSyndicate_tax(),calendar.today));
+                    }
+                    payroll.remove(index);
+                }
+                else if(info == 4)
+                {
+                    payroll.get(index).changePayMethod();
+                }
+                else if(info == 5)
+                {
+                    payroll.get(index).changeSyndicate();
+                }
+                else if(info == 6)
+                {
+                    payroll.get(index).changeSyndicateId();
+                }
+                else if(info == 7)
+                {
+                    payroll.get(index).changeSyndicateTax();
+                }
+                else
+                {
+                    throw new DomainExcepciotion("INVALID OPERATION");
+                }
+            }
+
+            else if(operation == 7)
+            {
+                int c = 0;
+                for(int i = 0; i < payroll.size(); i++)
+                {
+                    if(calendar.cal.compareTo(payroll.get(i).getPay_day()) == 0 )
+                    {
+                        System.out.println("ID: " + payroll.get(i).id);
+                        System.out.println("NAME: " + payroll.get(i).name);
+                        payroll.get(i).payment();
+                        c++;
+                        System.out.println();
+                    }
+                }
+                System.out.println(c + " WORKERS WERE PAID TODAY");
+            }
+
+            else if(operation == 11)
+            {
+                int index = search(payroll);
+                if(index != -1)
+                {
+                    System.out.println(payroll.get(index).toString());
+                }
             }
             else
             {
-                payroll.get(index).changeSyndicateTax();
+                throw new DomainExcepciotion("INVALID OPERATION");
             }
+        }
+        catch(InputMismatchException e)
+        {
+            System.out.println("WRONG INPUT DETECTED");
+        }
+        catch (DomainExcepciotion e)
+        {
+            System.out.println(e.getMessage());
         }
 
-        else if(operation == 7)
-        {
-            int c = 0;
-            for(int i = 0; i < payroll.size(); i++)
-            {
-                if(calendar.cal.compareTo(payroll.get(i).getPay_day()) == 0 )
-                {
-                    System.out.println("ID: " + payroll.get(i).id);
-                    System.out.println("NAME: " + payroll.get(i).name);
-                    payroll.get(i).payment();
-                    c++;
-                    System.out.println();
-                }
-            }
-            System.out.println(c + " WORKERS WERE PAID TODAY");
-        }
-
-        if(operation == 11)
-        {
-            int index = search(payroll);
-            if(index != -1)
-            {
-                System.out.println(payroll.get(index).toString());
-            }
-        }
 
         System.out.println();
         action(calendar, payroll);
