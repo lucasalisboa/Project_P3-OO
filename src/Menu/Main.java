@@ -79,13 +79,13 @@ public class Main {
 
                 if(aux == 1)
                 {
-                    payroll = stack.get(stack_index).undo(stack,stack_index);
+                    stack.get(stack_index).undo_redo(stack,stack_index,payroll);
                     stack_index++;
                 }
                 else if(aux == 2)
                 {
                     stack_index--;
-                    payroll = stack.get(stack_index).redo(stack,stack_index);
+                    stack.get(stack_index).undo_redo(stack,stack_index,payroll);
                 }
                 else
                 {
