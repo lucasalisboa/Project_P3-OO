@@ -1,5 +1,7 @@
 package Entities;
 
+import Menu.MyCalendar;
+
 import java.util.Date;
 import java.util.Scanner;
 import java.util.Calendar;
@@ -131,6 +133,17 @@ public abstract class Worker {
     {
         System.out.println(pay_day);
     }
+    public void changePaymentDay()
+    {
+        System.out.println("1 - MONTH FIRST DAY");
+        System.out.println("2 - MONTH DAY SEVEN");
+        System.out.println("3 - MONTH LAST DAY");
+        System.out.println("4 - WEEK ON MONDAYS");
+        System.out.println("5 - MONTH ON FRIDAYS");
+        System.out.println("6 - 2 WEEKS ON MONDAYS");
+        
+    }
+
 
     public String toString() {
         return "Worker{" +

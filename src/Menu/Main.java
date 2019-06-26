@@ -251,6 +251,31 @@ public class Main {
                     payroll.get(index).showPayment();
                 }
             }
+            else if(operation == 10)
+            {
+                int index = search(payroll);
+                if(index != -1)
+                {
+                    System.out.println("DO YOU WANT:");
+                    System.out.println("1 - PATTERN");
+                    System.out.println("2 - ALTERNATIVE");
+                    int aux = sc.nextInt();
+
+                    if(aux == 1)
+                    {
+                        payroll.get(index).newPayDay(calendar.today);
+                    }
+                    else if(aux == 2)
+                    {
+                        payroll.get(index).changePaymentDay();
+                    }
+                    else
+                    {
+                        throw new DomainExcepciotion("INVALID OPERATION");
+                    }
+                }
+
+            }
 
             else if(operation == 11)
             {
