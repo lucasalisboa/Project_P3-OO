@@ -76,16 +76,21 @@ public class Main {
                 System.out.println("1- UNDO?");
                 System.out.println("2- REDO?");
                 aux = sc.nextInt();
+                int quantity;
 
                 if(aux == 1)
                 {
-                    stack.get(stack_index).undo_redo(stack,stack_index,payroll);
-                    stack_index++;
+                    System.out.println("HOW MANY UNDOS YOU WANT TO DO?");
+                    quantity = sc.nextInt();
+                    stack_index += quantity;
+                    payroll = stack.get(stack_index).undo_redo(stack,stack_index);
                 }
                 else if(aux == 2)
                 {
-                    stack_index--;
-                    stack.get(stack_index).undo_redo(stack,stack_index,payroll);
+                    System.out.println("HOW MANY REDOS YOU WANT TO DO?");
+                    quantity = sc.nextInt();
+                    stack_index -= (quantity-1);
+                    payroll = stack.get(stack_index).undo_redo(stack,stack_index);
                 }
                 else
                 {

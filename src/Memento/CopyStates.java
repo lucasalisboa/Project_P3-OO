@@ -18,8 +18,8 @@ public class CopyStates {
     {
         previous = payroll.stream().collect(Collectors.toList());
     }
-    public void undo_redo(List<CopyStates> stack, int stack_index, List<Worker> payroll)
+    public List<Worker> undo_redo(List<CopyStates> stack, int stack_index)
     {
-        payroll = (List<Worker>) stack.get(stack_index).previous;
+        return (List<Worker>) stack.get(stack_index).previous;
     }
 }
