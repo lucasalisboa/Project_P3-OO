@@ -5,6 +5,7 @@ import Entities.HouristWorker;
 import Entities.SalariedWorker;
 import Entities.Worker;
 import Exceptions.DomainExcepciotion;
+import Memento.CopyStates;
 
 import java.util.ArrayList;
 //import java.util.Calendar;
@@ -13,15 +14,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) throws DomainExcepciotion {
         System.out.println("WELCOME\n");
         MyCalendar calendar = new MyCalendar();
         List<Worker> payroll = new ArrayList<>();
-        action(calendar,payroll);
+        List<CopyStates> stack = new ArrayList<>();
+        action(calendar,payroll,stack,0);
     }
 
-    public static void action(MyCalendar calendar, List <Worker> payroll) throws DomainExcepciotion
+    public static void action(MyCalendar calendar, List <Worker> payroll, List<CopyStates> stack, int stack_index) throws DomainExcepciotion
     {
+        stack.add(0,new CopyStates(payroll));
         System.out.println("TODAY IS:");
         System.out.println(calendar.data.format(calendar.today) + "," + calendar.dayWeek());
         System.out.println();
@@ -38,7 +42,6 @@ public class Main {
         System.out.println("10- CREATE A NEW PAYMENT SCHEDULE");
         System.out.println("11 - SHOW THE WORKER INFORMATIONS");
         System.out.println("12- FINISH THE DAY");
-
 
         try{
             int operation;
@@ -65,6 +68,30 @@ public class Main {
                 {
                     payroll.add(new CommissionedWorker(calendar.today));
                 }
+            }
+            else if(operation == 8)
+            {
+                int aux;
+                System.out.println("DO YOU MAKE:");
+                System.out.println("1- UNDO?");
+                System.out.println("2- REDO?");
+                aux = sc.nextInt();
+
+                if(aux == 1)
+                {
+                    payroll = stack.get(stack_index).undo(stack,stack_index);
+                    stack_index++;
+                }
+                else if(aux == 2)
+                {
+                    stack_index--;
+                    payroll = stack.get(stack_index).redo(stack,stack_index);
+                }
+                else
+                {
+                    throw new DomainExcepciotion("INVALID OPERATION");
+                }
+
             }
             else if (operation == 12)
             {
@@ -212,6 +239,14 @@ public class Main {
                 }
                 System.out.println(c + " WORKERS WERE PAID TODAY");
             }
+            else if (operation == 9)
+            {
+                int index = search(payroll);
+                if(index != -1)
+                {
+                    payroll.get(index).showPayment();
+                }
+            }
 
             else if(operation == 11)
             {
@@ -234,10 +269,15 @@ public class Main {
         {
             System.out.println(e.getMessage());
         }
+        catch (IndexOutOfBoundsException e)
+        {
+            System.out.println("ARRAY POSITION DOESN'T EXIST");
+            stack_index = 0;
+        }
 
 
         System.out.println();
-        action(calendar, payroll);
+        action(calendar, payroll,stack, stack_index);
 
     }
 

@@ -126,6 +126,11 @@ public abstract class Worker {
 
     public abstract void payment();
 
+    public void showPayment()
+    {
+        System.out.println(pay_day);
+    }
+
     public String toString() {
         return "Worker{" +
                 "id='" + id + '\'' +
