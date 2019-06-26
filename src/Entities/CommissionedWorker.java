@@ -1,15 +1,18 @@
 package Entities;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class CommissionedWorker extends Worker {
     private double base_salary;
-    private int sales;
+    private double sales;
     private double percent;
 
-    public CommissionedWorker()
+    public CommissionedWorker(Date today)
     {
         addWorker();
+        newPayDay(today);
     }
 
     public CommissionedWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax) {
@@ -40,12 +43,46 @@ public class CommissionedWorker extends Worker {
     }
     public void newSale()
     {
-        sales++;
+        double new_sale;
+        System.out.println("WHAT'S IS THE SALE PRICE?");
+        new_sale = sc.nextDouble();
+        sales += (new_sale*percent/100);
+
     }
     public void setPercent()
     {
         System.out.println("HOW MANY PERCENTS FOR SALE?");
         percent = sc.nextDouble();
+    }
+
+    @Override
+    public void newPayDay(Date today)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(today);
+        int week = 6 - cal.get(Calendar.DAY_OF_WEEK);
+        pay_day.setTime(today);
+        if(week > 0)
+        {
+            pay_day.add(Calendar.DAY_OF_MONTH,week + 7);
+        }
+        else
+        {
+            pay_day.add(Calendar.DAY_OF_MONTH,14 + week);
+        }
+    }
+
+    private void updatePayment()
+    {
+        pay_day.add(Calendar.DAY_OF_MONTH,14);
+    }
+
+    @Override
+    public void payment()
+    {
+        double salary = base_salary + sales;
+        System.out.println("PAYMENT: " +(salary - (salary*getSyndicate_tax()/100) ));
+        updatePayment();
     }
 
     @Override

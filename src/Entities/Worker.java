@@ -1,6 +1,8 @@
 package Entities;
 
+import java.util.Date;
 import java.util.Scanner;
+import java.util.Calendar;
 
 public abstract class Worker {
     public String id;
@@ -10,6 +12,7 @@ public abstract class Worker {
     private boolean syndicate;
     private String syndicate_id;
     private double syndicate_tax;
+    protected Calendar pay_day = Calendar.getInstance();
     Scanner sc = new Scanner(System.in);
 
     public void addWorker()
@@ -114,6 +117,14 @@ public abstract class Worker {
           beSyndicated();
       }
     }
+
+    public Calendar getPay_day() {
+        return pay_day;
+    }
+
+    public abstract void newPayDay(Date today);
+
+    public abstract void payment();
 
     public String toString() {
         return "Worker{" +

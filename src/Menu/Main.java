@@ -6,6 +6,7 @@ import Entities.SalariedWorker;
 import Entities.Worker;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -51,15 +52,15 @@ public class Main {
 
             if (type.equals("H"))
             {
-                payroll.add(new HouristWorker());
+                payroll.add(new HouristWorker(calendar.today));
             }
             else if(type.equals("S"))
             {
-                payroll.add(new SalariedWorker());
+                payroll.add(new SalariedWorker(calendar.today));
             }
             else
             {
-                payroll.add(new CommissionedWorker());
+                payroll.add(new CommissionedWorker(calendar.today));
             }
         }
         else if (operation == 12)
@@ -186,6 +187,23 @@ public class Main {
             {
                 payroll.get(index).changeSyndicateTax();
             }
+        }
+
+        else if(operation == 7)
+        {
+            int c = 0;
+            for(int i = 0; i < payroll.size(); i++)
+            {
+                if(calendar.cal.compareTo(payroll.get(i).getPay_day()) == 0 )
+                {
+                    System.out.println("ID: " + payroll.get(i).id);
+                    System.out.println("NAME: " + payroll.get(i).name);
+                    payroll.get(i).payment();
+                    c++;
+                    System.out.println();
+                }
+            }
+            System.out.println(c + " WORKERS WERE PAID TODAY");
         }
 
         if(operation == 11)
