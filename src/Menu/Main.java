@@ -236,7 +236,7 @@ public class Main {
                     {
                         System.out.println("ID: " + payroll.get(i).id);
                         System.out.println("NAME: " + payroll.get(i).name);
-                        payroll.get(i).payment();
+                        payroll.get(i).payment(calendar.today);
                         c++;
                         System.out.println();
                     }
@@ -258,16 +258,41 @@ public class Main {
                 {
                     System.out.println("DO YOU WANT:");
                     System.out.println("1 - PATTERN");
-                    System.out.println("2 - ALTERNATIVE");
+                    System.out.println("2 - MONTH FIRST DAY");
+                    System.out.println("3 - MONTH DAY SEVEN");
+                    System.out.println("4 - MONTH LAST DAY");
+                    System.out.println("5 - WEEK ON MONDAYS");
+                    System.out.println("6 - MONTH ON FRIDAYS");
+                    System.out.println("7 - 2 WEEKS ON MONDAYS");
                     int aux = sc.nextInt();
 
                     if(aux == 1)
                     {
-                        payroll.get(index).newPayDay(calendar.today);
+                        payroll.get(index).newPayDay_Pattern(calendar.today);
                     }
                     else if(aux == 2)
                     {
-                        payroll.get(index).changePaymentDay();
+                        payroll.get(index).newPayDay_MFD(calendar.cal);
+                    }
+                    else if(aux == 3)
+                    {
+                        payroll.get(index).newPayDay_MSD(calendar.cal);
+                    }
+                    else if(aux == 4)
+                    {
+                        payroll.get(index).newPayDay_MLD(calendar.cal);
+                    }
+                    else if(aux == 5)
+                    {
+                        payroll.get(index).newPayDay_WM(calendar.cal);
+                    }
+                    else if(aux == 6)
+                    {
+                        payroll.get(index).newPayDay_WF(calendar.cal);
+                    }
+                    else if(aux == 7)
+                    {
+                        payroll.get(index).newPayDay_2M(calendar.cal);
                     }
                     else
                     {

@@ -12,12 +12,12 @@ public class CommissionedWorker extends Worker {
     public CommissionedWorker(Date today)
     {
         addWorker();
-        newPayDay(today);
+        newPayDay_Pattern(today);
     }
 
     public CommissionedWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax,Date today) {
         changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
-        newPayDay(today);
+        newPayDay_Pattern(today);
     }
 
     @Override
@@ -57,8 +57,9 @@ public class CommissionedWorker extends Worker {
     }
 
     @Override
-    public void newPayDay(Date today)
+    public void newPayDay_Pattern(Date today)
     {
+        pay_schedule = Schedule.PATTERN;
         Calendar cal = Calendar.getInstance();
         cal.setTime(today);
         int week = 6 - cal.get(Calendar.DAY_OF_WEEK);
@@ -73,17 +74,12 @@ public class CommissionedWorker extends Worker {
         }
     }
 
-    private void updatePayment()
-    {
-        pay_day.add(Calendar.DAY_OF_MONTH,14);
-    }
-
     @Override
-    public void payment()
+    public void payment(Date today)
     {
         double salary = base_salary + sales;
         System.out.println("PAYMENT: " +(salary - (salary*getSyndicate_tax()/100) ));
-        updatePayment();
+        check_schedule(today);
     }
 
     @Override

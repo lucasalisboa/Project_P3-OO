@@ -11,12 +11,12 @@ public class HouristWorker extends Worker {
 
     public HouristWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax,Date today) {
         changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
-        newPayDay(today);
+        newPayDay_Pattern(today);
     }
 
     public HouristWorker(Date today) {
         addWorker();
-        newPayDay(today);
+        newPayDay_Pattern(today);
     }
 
     @Override
@@ -46,8 +46,9 @@ public class HouristWorker extends Worker {
         hours += new_hours;
     }
     @Override
-    public void newPayDay(Date today)
+    public void newPayDay_Pattern(Date today)
     {
+        pay_schedule = Schedule.PATTERN;
         Calendar cal = Calendar.getInstance();
         cal.setTime(today);
         int week = 6 - cal.get(Calendar.DAY_OF_WEEK);
@@ -63,17 +64,12 @@ public class HouristWorker extends Worker {
 
     }
 
-    private void updatePayment()
-    {
-        pay_day.add(Calendar.DAY_OF_MONTH,7);
-    }
-
     @Override
-    public void payment()
+    public void payment(Date today)
     {
         double salary = hours * hour_salary;
         System.out.println("PAYMENT: " +(salary - (salary*getSyndicate_tax()/100) ));
-        updatePayment();
+        check_schedule(today);
     }
 
     @Override

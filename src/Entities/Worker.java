@@ -14,6 +14,7 @@ public abstract class Worker {
     private boolean syndicate;
     private String syndicate_id;
     private double syndicate_tax;
+    protected Schedule pay_schedule;
     protected Calendar pay_day = Calendar.getInstance();
     Scanner sc = new Scanner(System.in);
 
@@ -21,6 +22,7 @@ public abstract class Worker {
     {
         System.out.println("WHAT'S THE WORKER ID?");
         id = sc.nextLine();
+        pay_schedule = Schedule.PATTERN;
         changeName();
         changeAddress();
         changePayMethod();
@@ -125,25 +127,123 @@ public abstract class Worker {
         return pay_day;
     }
 
-    public abstract void newPayDay(Date today);
+    public abstract void newPayDay_Pattern(Date today);
 
-    public abstract void payment();
+    public abstract void payment(Date today);
+
+    public void check_schedule(Date today){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(today);
+        if(pay_schedule.equals(Schedule.PATTERN))
+        {
+            newPayDay_Pattern(today);
+        }
+        else if(pay_schedule.equals(Schedule.MONTH_FIRST_DAY))
+        {
+            newPayDay_MFD(cal);
+        }
+        else if(pay_schedule.equals(Schedule.MONTH_DAY_SEVEN))
+        {
+            newPayDay_MSD(cal);
+        }
+        else if(pay_schedule.equals(Schedule.MONTH_LAST_DAY))
+        {
+            newPayDay_MLD(cal);
+        }
+        else if(pay_schedule.equals(Schedule.WEEK_ON_MONDAYS))
+        {
+            newPayDay_WM(cal);
+        }
+        else if(pay_schedule.equals(Schedule.WEEK_ON_FRIDAYS))
+        {
+            newPayDay_WF(cal);
+        }
+        else
+        {
+            newPayDay_2M(cal);
+        }
+        pay_day = cal;
+
+    }
+    public Calendar newPayDay_MFD(Calendar cal)
+    {
+        pay_schedule = Schedule.MONTH_FIRST_DAY;
+
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        cal.add(Calendar.DAY_OF_MONTH,1);
+        if(cal.get(Calendar.DAY_OF_WEEK)== 7)
+        {
+            cal.add(Calendar.DAY_OF_MONTH,2);
+        }
+        else if(cal.get(Calendar.DAY_OF_WEEK)== 1)
+        {
+            cal.add(Calendar.DAY_OF_MONTH,1);
+        }
+        return cal;
+    }
+    public Calendar newPayDay_MSD(Calendar cal)
+    {
+        pay_schedule = Schedule.MONTH_DAY_SEVEN;
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        cal.add(Calendar.DAY_OF_MONTH,7);
+        if(cal.get(Calendar.DAY_OF_WEEK)== 7)
+        {
+            cal.add(Calendar.DAY_OF_MONTH,2);
+        }
+        else if(cal.get(Calendar.DAY_OF_WEEK)== 1)
+        {
+            cal.add(Calendar.DAY_OF_MONTH,1);
+        }
+        return cal;
+
+    }
+    public Calendar newPayDay_MLD(Calendar cal)
+    {
+        pay_schedule = Schedule.MONTH_LAST_DAY;
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        if(cal.get(Calendar.DAY_OF_WEEK)== 7)
+        {
+            cal.add(Calendar.DAY_OF_MONTH,-1);
+        }
+        else if(cal.get(Calendar.DAY_OF_WEEK)== 1)
+        {
+            cal.add(Calendar.DAY_OF_MONTH,-2);
+        }
+        return cal;
+    }
+    public Calendar newPayDay_WM(Calendar cal)
+    {
+        pay_schedule = Schedule.MONTH_LAST_DAY;
+        int week = 2 - cal.get(Calendar.DAY_OF_WEEK);
+        cal.add(Calendar.DAY_OF_MONTH,week);
+        return cal;
+    }
+    public Calendar newPayDay_WF(Calendar cal)
+    {
+        pay_schedule = Schedule.WEEK_ON_FRIDAYS;
+        int week = 5 - cal.get(Calendar.DAY_OF_WEEK);
+        cal.add(Calendar.DAY_OF_MONTH,week);
+        return cal;
+    }
+    public Calendar newPayDay_2M(Calendar cal)
+    {
+        pay_schedule = Schedule.TWO_WEEKS_ON_MONDAYS;
+        int week = 2 - cal.get(Calendar.DAY_OF_WEEK);
+        if(week > 0)
+        {
+            pay_day.add(Calendar.DAY_OF_MONTH,week + 7);
+        }
+        else
+        {
+            pay_day.add(Calendar.DAY_OF_MONTH,14 + week);
+        }
+        return cal;
+    }
 
     public void showPayment()
     {
         System.out.println(pay_day);
     }
-    public void changePaymentDay()
-    {
-        System.out.println("1 - MONTH FIRST DAY");
-        System.out.println("2 - MONTH DAY SEVEN");
-        System.out.println("3 - MONTH LAST DAY");
-        System.out.println("4 - WEEK ON MONDAYS");
-        System.out.println("5 - MONTH ON FRIDAYS");
-        System.out.println("6 - 2 WEEKS ON MONDAYS");
-        
-    }
-
 
     public String toString() {
         return "Worker{" +
