@@ -7,11 +7,9 @@ import Entities.Worker;
 import Exceptions.DomainExcepciotion;
 import Memento.CopyStates;
 
-import java.util.ArrayList;
+import java.util.*;
 //import java.util.Calendar;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class Main {
 
@@ -266,9 +264,12 @@ public class Main {
                     System.out.println("3 - MONTH DAY SEVEN");
                     System.out.println("4 - MONTH LAST DAY");
                     System.out.println("5 - WEEK ON MONDAYS");
-                    System.out.println("6 - MONTH ON FRIDAYS");
+                    System.out.println("6 - WEEK ON FRIDAYS");
                     System.out.println("7 - 2 WEEKS ON MONDAYS");
                     int aux = sc.nextInt();
+
+                    Calendar cal_aux = Calendar.getInstance();
+                    cal_aux.setTime(calendar.today);
 
                     if(aux == 1)
                     {
@@ -276,27 +277,27 @@ public class Main {
                     }
                     else if(aux == 2)
                     {
-                        payroll.get(index).newPayDay_MFD(calendar.cal);
+                        payroll.get(index).newPayDay_MFD(cal_aux);
                     }
                     else if(aux == 3)
                     {
-                        payroll.get(index).newPayDay_MSD(calendar.cal);
+                        payroll.get(index).newPayDay_MSD(cal_aux);
                     }
                     else if(aux == 4)
                     {
-                        payroll.get(index).newPayDay_MLD(calendar.cal);
+                        payroll.get(index).newPayDay_MLD(cal_aux);
                     }
                     else if(aux == 5)
                     {
-                        payroll.get(index).newPayDay_WM(calendar.cal);
+                        payroll.get(index).newPayDay_WM(cal_aux);
                     }
                     else if(aux == 6)
                     {
-                        payroll.get(index).newPayDay_WF(calendar.cal);
+                        payroll.get(index).newPayDay_WF(cal_aux);
                     }
                     else if(aux == 7)
                     {
-                        payroll.get(index).newPayDay_2M(calendar.cal);
+                        payroll.get(index).newPayDay_2M(cal_aux);
                     }
                     else
                     {

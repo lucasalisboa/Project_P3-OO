@@ -1,6 +1,7 @@
 package Entities;
 
-import Menu.MyCalendar;
+
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -163,88 +164,81 @@ public abstract class Worker {
         {
             newPayDay_2M(cal);
         }
-        pay_day = cal;
+
 
     }
-    public Calendar newPayDay_MFD(Calendar cal)
+    public void newPayDay_MFD(Calendar cal)
     {
         pay_schedule = Schedule.MONTH_FIRST_DAY;
 
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
         cal.add(Calendar.DAY_OF_MONTH,1);
-        if(cal.get(Calendar.DAY_OF_WEEK)== 7)
+        if(cal.get(Calendar.DAY_OF_WEEK)== Calendar.SATURDAY)
         {
             cal.add(Calendar.DAY_OF_MONTH,2);
         }
-        else if(cal.get(Calendar.DAY_OF_WEEK)== 1)
+        else if(cal.get(Calendar.DAY_OF_WEEK)== Calendar.SUNDAY)
         {
             cal.add(Calendar.DAY_OF_MONTH,1);
         }
-        return cal;
+        pay_day.setTime(cal.getTime());
     }
-    public Calendar newPayDay_MSD(Calendar cal)
+    public void newPayDay_MSD(Calendar cal)
     {
         pay_schedule = Schedule.MONTH_DAY_SEVEN;
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
         cal.add(Calendar.DAY_OF_MONTH,7);
-        if(cal.get(Calendar.DAY_OF_WEEK)== 7)
+        if(cal.get(Calendar.DAY_OF_WEEK)== Calendar.SATURDAY)
         {
             cal.add(Calendar.DAY_OF_MONTH,2);
         }
-        else if(cal.get(Calendar.DAY_OF_WEEK)== 1)
+        else if(cal.get(Calendar.DAY_OF_WEEK)== Calendar.SUNDAY)
         {
             cal.add(Calendar.DAY_OF_MONTH,1);
         }
-        return cal;
-
+        pay_day.setTime(cal.getTime());
     }
-    public Calendar newPayDay_MLD(Calendar cal)
+    public void newPayDay_MLD(Calendar cal)
     {
         pay_schedule = Schedule.MONTH_LAST_DAY;
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-        if(cal.get(Calendar.DAY_OF_WEEK)== 7)
+        if(cal.get(Calendar.DAY_OF_WEEK)== Calendar.SATURDAY)
         {
             cal.add(Calendar.DAY_OF_MONTH,-1);
         }
-        else if(cal.get(Calendar.DAY_OF_WEEK)== 1)
+        else if(cal.get(Calendar.DAY_OF_WEEK)== Calendar.SUNDAY)
         {
             cal.add(Calendar.DAY_OF_MONTH,-2);
         }
-        return cal;
+        pay_day.setTime(cal.getTime());
     }
-    public Calendar newPayDay_WM(Calendar cal)
+    public void newPayDay_WM(Calendar cal)
     {
-        pay_schedule = Schedule.MONTH_LAST_DAY;
-        int week = 2 - cal.get(Calendar.DAY_OF_WEEK);
+        pay_schedule = Schedule.WEEK_ON_MONDAYS;
+        int week = 7 +(2 - cal.get(Calendar.DAY_OF_WEEK));
         cal.add(Calendar.DAY_OF_MONTH,week);
-        return cal;
+        pay_day.setTime(cal.getTime());
     }
-    public Calendar newPayDay_WF(Calendar cal)
+    public void newPayDay_WF(Calendar cal)
     {
         pay_schedule = Schedule.WEEK_ON_FRIDAYS;
-        int week = 5 - cal.get(Calendar.DAY_OF_WEEK);
+        int week = 7+(5 - cal.get(Calendar.DAY_OF_WEEK));
         cal.add(Calendar.DAY_OF_MONTH,week);
-        return cal;
+        pay_day.setTime(cal.getTime());
     }
-    public Calendar newPayDay_2M(Calendar cal)
+    public void newPayDay_2M(Calendar cal)
     {
         pay_schedule = Schedule.TWO_WEEKS_ON_MONDAYS;
         int week = 2 - cal.get(Calendar.DAY_OF_WEEK);
-        if(week > 0)
-        {
-            pay_day.add(Calendar.DAY_OF_MONTH,week + 7);
-        }
-        else
-        {
-            pay_day.add(Calendar.DAY_OF_MONTH,14 + week);
-        }
-        return cal;
+        cal.add(Calendar.DAY_OF_MONTH,(14 + week));
+        pay_day.setTime(cal.getTime());
     }
 
-    public void showPayment(SimpleDateFormat data)
+    public void showPayment(SimpleDateFormat calendar)
     {
+        Date cal = pay_day.getTime();
         System.out.println(pay_schedule);
-        System.out.println(data.format(pay_day));
+        System.out.println("NEXT PAYMENT:" + calendar.format(cal));
     }
 
     public String toString() {
