@@ -2,6 +2,7 @@ package Entities;
 
 import Menu.MyCalendar;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.Calendar;
@@ -240,9 +241,10 @@ public abstract class Worker {
         return cal;
     }
 
-    public void showPayment()
+    public void showPayment(SimpleDateFormat data)
     {
-        System.out.println(pay_day);
+        System.out.println(pay_schedule);
+        System.out.println(data.format(pay_day));
     }
 
     public String toString() {
