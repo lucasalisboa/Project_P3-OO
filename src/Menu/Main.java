@@ -18,12 +18,12 @@ public class Main {
         MyCalendar calendar = new MyCalendar();
         List<Worker> payroll = new ArrayList<>();
         List<CopyStates> stack = new ArrayList<>();
+        save_state(payroll,stack,0);
         action(calendar,payroll,stack,0);
     }
 
     public static void action(MyCalendar calendar, List <Worker> payroll, List<CopyStates> stack, int stack_index) throws DomainExcepciotion
     {
-        stack.add(0,new CopyStates(payroll));
         System.out.println("TODAY IS:");
         System.out.println(calendar.data.format(calendar.today) + "," + calendar.dayWeek());
         System.out.println();
@@ -66,6 +66,8 @@ public class Main {
                 {
                     payroll.add(new CommissionedWorker(calendar.today));
                 }
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
             else if(operation == 8)
             {
@@ -74,26 +76,20 @@ public class Main {
                 System.out.println("1- UNDO?");
                 System.out.println("2- REDO?");
                 aux = sc.nextInt();
-                int quantity;
 
                 if(aux == 1)
                 {
-                    System.out.println("HOW MANY UNDOS YOU WANT TO DO?");
-                    quantity = sc.nextInt();
-                    stack_index += quantity;
-                    payroll = stack.get(stack_index).undo_redo(stack,stack_index);
+                    stack_index++;
                 }
                 else if(aux == 2)
                 {
-                    System.out.println("HOW MANY REDOS YOU WANT TO DO?");
-                    quantity = sc.nextInt();
-                    stack_index -= (quantity-1);
-                    payroll = stack.get(stack_index).undo_redo(stack,stack_index);
+                    stack_index--;
                 }
                 else
                 {
                     throw new DomainExcepciotion("INVALID OPERATION");
                 }
+                stack.get(stack_index).undo_redo(payroll);
 
             }
             else if (operation == 12)
@@ -111,6 +107,8 @@ public class Main {
                 {
                     remove(payroll,index);
                 }
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
 
             else if(operation == 3)
@@ -127,6 +125,8 @@ public class Main {
                         System.out.println("THIS WORKER IS NOT A HOURIST");
                     }
                 }
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
             else if(operation == 4)
             {
@@ -142,6 +142,8 @@ public class Main {
                         System.out.println("THIS WORKER IS NOT A COMMISSIONED");
                     }
                 }
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
             else if(operation == 5)
             {
@@ -157,6 +159,8 @@ public class Main {
                         System.out.println("THIS WORKER IS NOT A COMMISSIONED");
                     }
                 }
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
 
             else if(operation == 6)
@@ -226,7 +230,8 @@ public class Main {
                         throw new DomainExcepciotion("INVALID OPERATION");
                     }
                 }
-
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
 
             else if(operation == 7)
@@ -244,6 +249,8 @@ public class Main {
                     }
                 }
                 System.out.println(c + " WORKERS WERE PAID TODAY");
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
             else if (operation == 9)
             {
@@ -304,7 +311,8 @@ public class Main {
                         throw new DomainExcepciotion("INVALID OPERATION");
                     }
                 }
-
+                save_state(payroll,stack,stack_index);
+                stack_index = 0;
             }
 
             else if(operation == 11)
@@ -334,10 +342,19 @@ public class Main {
             stack_index = 0;
         }
 
-
         System.out.println();
         action(calendar, payroll,stack, stack_index);
+    }
 
+    public static void save_state(List<Worker> payroll, List<CopyStates> stack, int index_stack)
+    {
+        index_stack--;
+        while (index_stack > 0)
+        {
+            stack.remove(index_stack);
+            index_stack--;
+        }
+        stack.add(0,new CopyStates(payroll));
     }
 
     public static void remove(List <Worker> payroll, int i)

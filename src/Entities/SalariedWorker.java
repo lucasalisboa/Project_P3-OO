@@ -16,6 +16,11 @@ public class SalariedWorker extends Worker {
         changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
         newPayDay_Pattern(today);
     }
+    public SalariedWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax,double salary)
+    {
+        super.changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
+        this.salary = salary;
+    }
 
     @Override
     public void changeType(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax)
@@ -70,6 +75,10 @@ public class SalariedWorker extends Worker {
     {
         System.out.println("PAYMENT: " +(salary - (salary*getSyndicate_tax()/100) ));
         check_schedule(today);
+    }
+
+    public double getSalary() {
+        return salary;
     }
 
     @Override

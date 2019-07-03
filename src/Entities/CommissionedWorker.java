@@ -19,6 +19,13 @@ public class CommissionedWorker extends Worker {
         changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
         newPayDay_Pattern(today);
     }
+    public CommissionedWorker(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax, double base_salary, double sales, double percent)
+    {
+        super.changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
+        this.base_salary = base_salary;
+        this.sales = sales;
+        this.percent = percent;
+    }
 
     @Override
     public void changeType(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax)
@@ -80,6 +87,18 @@ public class CommissionedWorker extends Worker {
         double salary = base_salary + sales;
         System.out.println("PAYMENT: " +(salary - (salary*getSyndicate_tax()/100) ));
         check_schedule(today);
+    }
+
+    public double getBase_salary() {
+        return base_salary;
+    }
+
+    public double getSales() {
+        return sales;
+    }
+
+    public double getPercent() {
+        return percent;
     }
 
     @Override
