@@ -28,7 +28,7 @@ public class SalariedWorker extends Worker {
         super.changeType(id,name,address,payment_method,syndicate, syndicate_id, syndicate_tax);
         newType();
     }
-    public void newType()
+    private void newType()
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("WHAT'S THE SALARY?");

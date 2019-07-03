@@ -8,12 +8,12 @@ import Exceptions.DomainExcepciotion;
 import Memento.CopyStates;
 
 import java.util.*;
-//import java.util.Calendar;
+
 
 
 public class Main {
 
-    public static void main(String[] args) throws DomainExcepciotion {
+    public static void main(String[] args)  {
         System.out.println("WELCOME\n");
         MyCalendar calendar = new MyCalendar();
         List<Worker> payroll = new ArrayList<>();
@@ -22,7 +22,7 @@ public class Main {
         action(calendar,payroll,stack,0);
     }
 
-    public static void action(MyCalendar calendar, List <Worker> payroll, List<CopyStates> stack, int stack_index) throws DomainExcepciotion
+    private static void action(MyCalendar calendar, List <Worker> payroll, List<CopyStates> stack, int stack_index)
     {
         System.out.println("TODAY IS:");
         System.out.println(calendar.data.format(calendar.today) + "," + calendar.dayWeek());
@@ -237,13 +237,11 @@ public class Main {
             else if(operation == 7)
             {
                 int c = 0;
-                for(int i = 0; i < payroll.size(); i++)
-                {
-                    if(calendar.cal.compareTo(payroll.get(i).getPay_day()) == 0 )
-                    {
-                        System.out.println("ID: " + payroll.get(i).id);
-                        System.out.println("NAME: " + payroll.get(i).name);
-                        payroll.get(i).payment(calendar.today);
+                for (Worker worker : payroll) {
+                    if (calendar.cal.compareTo(worker.getPay_day()) == 0) {
+                        System.out.println("ID: " + worker.id);
+                        System.out.println("NAME: " + worker.name);
+                        worker.payment(calendar.today);
                         c++;
                         System.out.println();
                     }
@@ -346,7 +344,7 @@ public class Main {
         action(calendar, payroll,stack, stack_index);
     }
 
-    public static void save_state(List<Worker> payroll, List<CopyStates> stack, int index_stack)
+    private static void save_state(List<Worker> payroll, List<CopyStates> stack, int index_stack)
     {
         index_stack--;
         while (index_stack > 0)
@@ -357,13 +355,13 @@ public class Main {
         stack.add(0,new CopyStates(payroll));
     }
 
-    public static void remove(List <Worker> payroll, int i)
+    private static void remove(List <Worker> payroll, int i)
     {
         String worker_name = payroll.get(i).name;
         payroll.remove(i);
         System.out.println("THE WORKER " + worker_name + " WAS REMOVED");
     }
-    public static int search(List <Worker> payroll)
+    private static int search(List <Worker> payroll)
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("WHAT'S THE WORKER ID?");

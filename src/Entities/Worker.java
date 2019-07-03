@@ -30,8 +30,7 @@ public abstract class Worker {
         changePayMethod();
         System.out.println("DOES THE WORKER IS SYNDICATED?");
         System.out.println("Y - YES / N - NO");
-        String aux = sc.next();
-        sc.nextLine();
+        String aux = sc.nextLine();
         if(aux.equals("N")||aux.equals("NO"))
         {
             notSyndicated();
@@ -40,6 +39,7 @@ public abstract class Worker {
         {
             beSyndicated();
         }
+        sc.nextLine();
     }
 
     public void changeType(String id, String name, String address, String payment_method, boolean syndicate, String syndicate_id, double syndicate_tax) {
@@ -91,7 +91,6 @@ public abstract class Worker {
     public void changeSyndicateId()
     {
         System.out.println("WHAT'S THE SYNDICATE ID?");
-        sc.nextLine();
         syndicate_id = sc.nextLine();
     }
     public void changeSyndicateTax()
